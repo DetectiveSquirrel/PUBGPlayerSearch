@@ -8,6 +8,7 @@
 * Searching invalid player will result in Crash/Error
 * All Settings selected are saved so you don't have to change them every time you re-open the application
 * You must use your own API key from https://pubgtracker.com/site-api as I don't want mine being known
+* Pressing "Refresh" creates a request for the players 'Live Tracker' page mimicing you loading it normaly so all games SHOULD be recorded game by game and not grouped
 
 ## Getting API key
 You can get your API key from here: https://pubgtracker.com/site-api  
