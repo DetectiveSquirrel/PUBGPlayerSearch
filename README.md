@@ -15,4 +15,4 @@ Paste the API Key into the API Key box
 
 
 ## Preview
-![Preview](https://raw.githubusercontent.com/DetectiveSquirrel/PUBGPlayerSearch/master/images/Preview.png)
+![Preview](https://raw.githubusercontent.com/DetectiveSquirrel/PUBGPlayerSearch/master/images/preview.png)
