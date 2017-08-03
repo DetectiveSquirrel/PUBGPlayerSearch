@@ -14,6 +14,8 @@
 You can get your API key from here: https://pubgtracker.com/site-api  
 Paste the API Key into the API Key box
 
+## Credits
+Icon made by www.flaticon.com/authors/roundicons from www.flaticon.com
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DetectiveSquirrel/PUBGPlayerSearch/master/images/preview.png)
