@@ -173,12 +173,12 @@
             this.groupBox1.Controls.Add(this.LastRaitingChange);
             this.groupBox1.Controls.Add(this.LastRankChange);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(7, 56);
+            this.groupBox1.Location = new System.Drawing.Point(7, 75);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(391, 74);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Last Known Game";
+            this.groupBox1.Text = "Last Known Game(s)";
             // 
             // LastPlacement
             // 
@@ -315,9 +315,9 @@
             this.Value,
             this.Rank});
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(6, 136);
+            this.listView1.Location = new System.Drawing.Point(6, 155);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(392, 371);
+            this.listView1.Size = new System.Drawing.Size(392, 352);
             this.listView1.TabIndex = 9;
             this.listView1.TabStop = false;
             this.listView1.UseCompatibleStateImageBehavior = false;

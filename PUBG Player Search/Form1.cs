@@ -36,10 +36,10 @@ namespace PUBG_Player_Search
             SetStat("LastDamage", "");
             LoadSettings();
         }
-
+        
         public async void RunStats()
         {
-            if (UserBox.Text == "")
+            if (UserBox.Text == "" || APIKeyBox.Text == "")
                 return;
 
             var previousButtonText = RefreshButton.Text;
@@ -62,6 +62,7 @@ namespace PUBG_Player_Search
 
                 try
                 {
+                    #region StatShit
                     var region = WhatRegion();
                     var mode = WhatMode();
                     var season = WhatSeason();
@@ -125,6 +126,8 @@ namespace PUBG_Player_Search
                     var PreviousGamePlacement = player.MatchHistory.Find(x => x.Mode == mode && x.Region == region).Top10;
                     var PreviousGameDamage = player.MatchHistory.Find(x => x.Mode == mode && x.Region == region).Damage;
                     var PreviousGameWin = player.MatchHistory.Find(x => x.Mode == mode && x.Region == region).Wins;
+                    var LastUpdatedMatchHistory = player.MatchHistory.Find(x => x.Mode == mode && x.Region == region).Updated.ToLocalTime();
+                    var LastUpdatedMatchHistoryRounds = player.MatchHistory.Find(x => x.Mode == mode && x.Region == region).Rounds;
 
                     if (PreviousGameRankChange < 0)
                     {
@@ -166,7 +169,7 @@ namespace PUBG_Player_Search
 
                     var winString = "";
 
-                    if (PreviousGameWin == 1)
+                    if (PreviousGameWin == 1 && PreviousGamePlacement == 1)
                     {
                         winString = "Winner!";
                         LastPlacement.ForeColor = Color.DarkGreen;
@@ -207,6 +210,8 @@ namespace PUBG_Player_Search
                             break;
 
                     }
+
+                    groupBox1.Text = string.Format("Last Known Game(s) - Rounds: {1} - {0}", LastUpdatedMatchHistory, LastUpdatedMatchHistoryRounds);
 
                     SetStat("Raiting", Raiting.Value.AddSeperators());
                     SetStat("LastPlacement", winString);
@@ -266,21 +271,25 @@ namespace PUBG_Player_Search
                     AddItemToListView(AverageRideDistance);
                     AddItemToListView(DamageDealt);
                     AddItemToListView(DBNOs);
+                    #endregion
                 }
                 catch (PUBGSharpException ex) { }
                 catch (NullReferenceException) { }
 
                 RefreshButton.Enabled = true;
-                RefreshButton.Text = previousButtonText;
+                RefreshButton.Text = "Refresh";
 
-                // Create a request for the URL. 		
-                WebRequest request = WebRequest.Create($"https://pubgtracker.com/history/pc/{UserBox.Text}");
-                // If required by the server, set the credentials.
-                request.Credentials = CredentialCache.DefaultCredentials;
-                // Get the response.
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                // Cleanup the streams and the response.
-                response.Close();
+                if (player != null)
+                {
+                    // Create a request for the URL. 		
+                    WebRequest request = WebRequest.Create($"https://pubgtracker.com/history/pc/{UserBox.Text}");
+                    // If required by the server, set the credentials.
+                    request.Credentials = CredentialCache.DefaultCredentials;
+                    // Get the response.
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    // Cleanup the streams and the response.
+                    response.Close();
+                }
             }
         }
 
